@@ -22,5 +22,10 @@ namespace PruebaTecnicaBitsion.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult AltaCliente(Cliente cliente)
+        {
+            return View();
+        }
     }
 }
