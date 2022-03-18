@@ -1,0 +1,50 @@
+﻿@model List<PruebaTecnicaBitsion.Models.Cliente>
+
+@{
+    ViewBag.Title = "Listado Clientes";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="display-1">Listado de Clientes</h2>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Nuevo cliente", "AltaCliente")
+</p>
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Nombre Completo</th>
+        <th>Edad</th>
+        <th>Género</th>
+        <th>Estado</th>
+        <th>Maneja?</th>
+        <th>Usa lentes?</th>
+        <th>Es diabético?</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Nombre
+        </td>
+        <td>
+            @item.Nacimiento
+        </td>
+        <td>
+            @item.Genero
+        </td>
+            @if (item.Estado) { <td>Activo</td> } else { <td>Baja</td> }
+            @if (item.Maneja) { <td>Si</td> } else { <td>No</td> }
+            @if (item.Lentes) { <td>Si</td> } else { <td>No</td> }
+            @if (item.Diabetico) { <td>Si</td> } else { <td>No</td> }
+        <td>
+            @Html.ActionLink("Modificar", "EditarCliente", new { id=item.Id }) |
+            @Html.ActionLink("Eliminar", "EliminarCliente", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

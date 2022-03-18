@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PruebaTecnicaBitsion.AccesoDatos;
+using PruebaTecnicaBitsion.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,9 @@ namespace PruebaTecnicaBitsion.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            return View();
+            GestorBD gestor = new GestorBD();
+            List<Cliente> clientes = gestor.ListadoClientes();
+            return View(clientes);
         }
 
         public ActionResult AltaCliente()

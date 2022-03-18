@@ -54,7 +54,11 @@ namespace PruebaTecnicaBitsion.AccesoDatos
                 cliente.Maneja = (bool)dr["maneja"];
                 cliente.Lentes = (bool)dr["lentes"];
                 cliente.Diabetico = (bool)dr["diabetico"];
-                cliente.Enfermedades = (string)dr["enfermedades"];
+                if (dr["enfermedades"] != null)
+                {
+                    cliente.Enfermedades = (string)dr["enfermedades"];
+                }
+                
                 lista.Add(cliente);
             }
 
