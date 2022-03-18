@@ -11,7 +11,7 @@ namespace PruebaTecnicaBitsion.Models
         public int Id { get; set; }
         [Required]
         public string Nombre { get; set; }
-        public int Edad { get; set; }
+        public DateTime Nacimiento { get; set; }
         public string Genero { get; set; }
         public bool Estado { get; set; }
         public bool Maneja { get; set; }
@@ -19,7 +19,10 @@ namespace PruebaTecnicaBitsion.Models
         public bool Diabetico { get; set; }
         public string Enfermedades { get; set; }
 
-
+        public int calcularEdad()
+        {
+            return 0;
+        }
 
     }
 }

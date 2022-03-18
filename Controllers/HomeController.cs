@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PruebaTecnicaBitsion.AccesoDatos;
 
 namespace PruebaTecnicaBitsion.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
+            GestorBD gestor = new GestorBD();
+            //gestor.CrearCliente("prueba", DateTime.Now, "femenino", true, true, false, false, "");
+
             return View();
         }
 
