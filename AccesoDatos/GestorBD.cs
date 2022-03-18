@@ -9,24 +9,25 @@ namespace PruebaTecnicaBitsion.AccesoDatos
 {
     public class GestorBD
     {
-        public void CrearCliente(string nombre, DateTime nacimiento, string genero, bool estado, bool maneja, bool lentes, bool diabetico, string enfermedades)
+        public void CrearCliente(Cliente cliente)
         {
-            var sql = "INSERT INTO Clientes (nombre, nacimiento, genero, estado, maneja, lentes, diabetico, enfermedades) " +
-                      "VALUES (@nombre, @nacimiento, @genero, @estado, @maneja, @lentes, @diabetico, @enfermedades)";
+            var sql = "INSERT INTO Clientes (nombre, nacimiento, genero, estado, maneja, lentes, diabetico, enfermedades, dni) " +
+                      "VALUES (@nombre, @nacimiento, @genero, @estado, @maneja, @lentes, @diabetico, @enfermedades, @dni)";
 
             SqlConnection con = new SqlConnection("Data Source=JARADEV\\SQLEXPRESS;Initial Catalog=Ficticia;Integrated Security=True");
             con.Open();
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
-            cmd.Parameters.AddWithValue("@nombre", nombre);
-            cmd.Parameters.AddWithValue("@nacimiento", nacimiento);
-            cmd.Parameters.AddWithValue("@genero", genero);
-            cmd.Parameters.AddWithValue("@estado", estado);
-            cmd.Parameters.AddWithValue("@maneja", maneja);
-            cmd.Parameters.AddWithValue("@lentes", lentes);
-            cmd.Parameters.AddWithValue("@diabetico", diabetico);
-            cmd.Parameters.AddWithValue("@enfermedades", enfermedades);
+            cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+            cmd.Parameters.AddWithValue("@nacimiento", cliente.Nacimiento);
+            cmd.Parameters.AddWithValue("@genero", cliente.Genero);
+            cmd.Parameters.AddWithValue("@estado", cliente.Estado);
+            cmd.Parameters.AddWithValue("@maneja", cliente.Maneja);
+            cmd.Parameters.AddWithValue("@lentes", cliente.Lentes);
+            cmd.Parameters.AddWithValue("@diabetico", cliente.Diabetico);
+            cmd.Parameters.AddWithValue("@enfermedades", cliente.Enfermedades);
+            cmd.Parameters.AddWithValue("@dni", cliente.DNI);
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -48,6 +49,7 @@ namespace PruebaTecnicaBitsion.AccesoDatos
                 Cliente cliente = new Cliente();
                 cliente.Id = (int)dr["IdCliente"];
                 cliente.Nombre = (string)dr["nombre"];
+                cliente.DNI = (int)dr["dni"];
                 cliente.Nacimiento = (DateTime)dr["nacimiento"];
                 cliente.Genero = (string)dr["genero"];
                 cliente.Estado = (bool)dr["estado"];

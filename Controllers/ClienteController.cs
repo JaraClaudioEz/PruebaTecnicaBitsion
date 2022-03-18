@@ -25,7 +25,20 @@ namespace PruebaTecnicaBitsion.Controllers
         [HttpPost]
         public ActionResult AltaCliente(Cliente cliente)
         {
-            return View();
+            GestorBD gestor = new GestorBD();
+
+            if (!String.IsNullOrWhiteSpace(cliente.Enfermedades))
+            {
+                gestor.CrearCliente(cliente);
+                return View("Index", gestor.ListadoClientes());
+            }
+            else
+            {
+                cliente.Enfermedades = "Ninguna";
+                gestor.CrearCliente(cliente);
+                return View("Index", gestor.ListadoClientes());
+            }
+            
         }
     }
 }

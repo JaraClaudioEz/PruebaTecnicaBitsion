@@ -18,6 +18,7 @@ namespace PruebaTecnicaBitsion.Models
         public bool Lentes { get; set; }
         public bool Diabetico { get; set; }
         public string Enfermedades { get; set; }
+        public int DNI { get; set; }
 
         public int calcularEdad()
         {
