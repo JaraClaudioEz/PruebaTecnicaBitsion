@@ -45,8 +45,8 @@
             @if (item.Lentes) { <td>Si</td> } else { <td>No</td> }
             @if (item.Diabetico) { <td>Si</td> } else { <td>No</td> }
         <td>
-            @Html.ActionLink("Modificar", "EditarCliente", new { id=item.Id }) |
-            @Html.ActionLink("Eliminar", "EliminarCliente", new { id=item.Id })
+            <a href="Cliente/EditarCliente?idCliente=@item.Id" class="btn btn-success">Modificar</a>
+            <a href="Cliente/EliminarCliente?idCliente=@item.Id" class="btn btn-danger">Eliminar</a>
         </td>
     </tr>
 }

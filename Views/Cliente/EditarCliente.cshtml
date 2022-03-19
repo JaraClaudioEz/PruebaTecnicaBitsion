@@ -1,13 +1,13 @@
 ﻿@model PruebaTecnicaBitsion.Models.Cliente
 
 @{
-    ViewBag.Title = "Alta";
+    ViewBag.Title = "Editar";
 }
 
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h2 class="display-2">Alta de Cliente</h2>
+            <h2 class="display-2">Edición de Cliente</h2>
         </div>
     </div>
 
@@ -15,6 +15,7 @@
         <div class="col">
                 @using (Html.BeginForm())
                 {
+                    @Html.HiddenFor(x => x.Id)
                     <div class="my-3">
                         <label class="form-label">Nombre Completo</label>
                         @Html.TextBoxFor(x => x.Nombre, htmlAttributes: new { @class = "form-control", @type = "text" })
@@ -25,7 +26,7 @@
                     </div>
                     <div class="my-3">
                         <label class="form-label">Fecha de Nacimiento</label>
-                        @Html.TextBoxFor(x => x.Nacimiento, htmlAttributes: new { @class = "form-control", @type = "date" })
+                        @Html.TextBoxFor(x => x.Nacimiento, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @type = "date" })
                     </div>
                     <div class="my-3">
                         <label class="form-label">Género</label>
@@ -52,7 +53,7 @@
                         @Html.TextAreaFor(x => x.Nombre, htmlAttributes: new { @class = "form-control" })
                         <div id="ayudaEnfermedades" class="form-text">Si tiene otras enfermedades, descríbalas aquí.</div>
                     </div>
-                    <button type="submit" class="btn btn-primary my-3">Agregar</button>
+                    <button type="submit" class="btn btn-primary my-3">Aceptar</button>
                 }
         </div>
     </div>
