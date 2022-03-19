@@ -11,7 +11,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Nuevo cliente", "AltaCliente")
+    <a href="/Cliente/AltaCliente" class="btn btn-primary">Nuevo Cliente</a>
 </p>
 <table class="table table-striped table-hover">
     <tr>
@@ -45,8 +45,8 @@
             @if (item.Lentes) { <td>Si</td> } else { <td>No</td> }
             @if (item.Diabetico) { <td>Si</td> } else { <td>No</td> }
         <td>
-            <a href="Cliente/EditarCliente?idCliente=@item.Id" class="btn btn-success">Modificar</a>
-            <a href="Cliente/EliminarCliente?idCliente=@item.Id" class="btn btn-danger">Eliminar</a>
+            <a href="/Cliente/EditarCliente?idCliente=@item.Id" class="btn btn-success">Modificar</a>
+            <a href="/Cliente/EliminarCliente?idCliente=@item.Id" class="btn btn-warning">Eliminar</a>
         </td>
     </tr>
 }

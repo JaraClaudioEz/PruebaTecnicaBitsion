@@ -64,5 +64,28 @@ namespace PruebaTecnicaBitsion.Controllers
                 return RedirectToAction("Index"); //No especifico controller por que me muevo en el mismo. 
             }
         }
+
+        public ActionResult EliminarCliente(int idCliente)
+        {
+            GestorBD gestor = new GestorBD();
+            return View(gestor.BuscarCliente(idCliente));
+        }
+        [HttpPost]
+        public ActionResult EliminarCliente(Cliente cliente)
+        {
+            GestorBD gestor = new GestorBD();
+
+            if (!String.IsNullOrWhiteSpace(cliente.Enfermedades))
+            {
+                gestor.EliminarCliente(cliente);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                cliente.Enfermedades = "Ninguna"; //Hardcodeo temporal
+                gestor.EliminarCliente(cliente);
+                return RedirectToAction("Index"); 
+            }
+        }
     }
 }

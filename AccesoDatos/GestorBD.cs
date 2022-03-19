@@ -122,5 +122,20 @@ namespace PruebaTecnicaBitsion.AccesoDatos
             con.Close();
             return lista;
         }
+
+        public void EliminarCliente(Cliente cliente)
+        {
+            var sql = "DELETE FROM Clientes WHERE idCliente=@id";
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["BD"].ConnectionString);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@id", cliente.Id);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }
