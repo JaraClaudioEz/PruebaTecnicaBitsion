@@ -1,24 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace PruebaTecnicaBitsion.Models
 {
-    public class Cliente
+    public class DTOCliente
     {
         public int Id { get; set; }
-        [Required]
         public string Nombre { get; set; }
         public DateTime Nacimiento { get; set; }
-        public int IdGenero { get; set; }
         public bool Estado { get; set; }
         public bool Maneja { get; set; }
         public bool Lentes { get; set; }
         public bool Diabetico { get; set; }
-        public string Enfermedades { get; set; }
         public int DNI { get; set; }
+        public string Descripcion { get; set; }
 
+        public int calcularEdad()
+        {
+            TimeSpan edad = DateTime.Today - Nacimiento;
+            DateTime total = new DateTime(edad.Ticks);
+            return total.Year - 1;
+        }
     }
 }

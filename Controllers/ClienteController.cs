@@ -14,28 +14,31 @@ namespace PruebaTecnicaBitsion.Controllers
         public ActionResult Index()
         {
             GestorBD gestor = new GestorBD();
-            List<Cliente> clientes = gestor.ListadoClientes();
+            List<DTOCliente> clientes = gestor.ListadoClientes();
             return View(clientes);
         }
 
         public ActionResult AltaCliente()
         {
-            return View();
+            GestorBD gestor = new GestorBD(); 
+            VMCliente cliente = new VMCliente();
+            cliente.Generos = gestor.ListadoGeneros(); ;
+            return View(cliente);
         }
         [HttpPost]
-        public ActionResult AltaCliente(Cliente cliente)
+        public ActionResult AltaCliente(VMCliente cliente)
         {
             GestorBD gestor = new GestorBD();
 
-            if (!String.IsNullOrWhiteSpace(cliente.Enfermedades))
+            if (!String.IsNullOrWhiteSpace(cliente.ClienteModel.Enfermedades))
             {
-                gestor.CrearCliente(cliente); 
+                gestor.CrearCliente(cliente.ClienteModel); 
                 return View("Index", gestor.ListadoClientes());
             }
             else
             {
-                cliente.Enfermedades = "Ninguna"; //Hardcodeo temporal
-                gestor.CrearCliente(cliente);
+                cliente.ClienteModel.Enfermedades = "Ninguna"; //Hardcodeo temporal
+                gestor.CrearCliente(cliente.ClienteModel);
                 return View("Index", gestor.ListadoClientes());
             }
             
@@ -44,23 +47,24 @@ namespace PruebaTecnicaBitsion.Controllers
         public ActionResult EditarCliente(int idCliente)
         {
             GestorBD gestor = new GestorBD();
-            var cliente = gestor.BuscarCliente(idCliente);
+            VMCliente cliente = gestor.BuscarCliente(idCliente);
+            cliente.Generos = gestor.ListadoGeneros();
             return View(cliente);
         }
         [HttpPost]
-        public ActionResult EditarCliente(Cliente cliente)
+        public ActionResult EditarCliente(VMCliente cliente)
         {
             GestorBD gestor = new GestorBD();
 
-            if (!String.IsNullOrWhiteSpace(cliente.Enfermedades))
+            if (!String.IsNullOrWhiteSpace(cliente.ClienteModel.Enfermedades))
             {
-                gestor.EditarCliente(cliente);
+                gestor.EditarCliente(cliente.ClienteModel);
                 return RedirectToAction("Index");
             }
             else
             {
-                cliente.Enfermedades = "Ninguna"; //Hardcodeo temporal
-                gestor.EditarCliente(cliente);
+                cliente.ClienteModel.Enfermedades = "Ninguna"; //Hardcodeo temporal
+                gestor.EditarCliente(cliente.ClienteModel);
                 return RedirectToAction("Index"); //No especifico controller por que me muevo en el mismo. 
             }
         }
@@ -68,22 +72,24 @@ namespace PruebaTecnicaBitsion.Controllers
         public ActionResult EliminarCliente(int idCliente)
         {
             GestorBD gestor = new GestorBD();
-            return View(gestor.BuscarCliente(idCliente));
+            VMCliente cliente = gestor.BuscarCliente(idCliente);
+            cliente.Generos = gestor.ListadoGeneros();
+            return View(cliente);
         }
         [HttpPost]
-        public ActionResult EliminarCliente(Cliente cliente)
+        public ActionResult EliminarCliente(VMCliente cliente)
         {
             GestorBD gestor = new GestorBD();
 
-            if (!String.IsNullOrWhiteSpace(cliente.Enfermedades))
+            if (!String.IsNullOrWhiteSpace(cliente.ClienteModel.Enfermedades))
             {
-                gestor.EliminarCliente(cliente);
+                gestor.EliminarCliente(cliente.ClienteModel);
                 return RedirectToAction("Index");
             }
             else
             {
-                cliente.Enfermedades = "Ninguna"; //Hardcodeo temporal
-                gestor.EliminarCliente(cliente);
+                cliente.ClienteModel.Enfermedades = "Ninguna"; //Hardcodeo temporal
+                gestor.EliminarCliente(cliente.ClienteModel);
                 return RedirectToAction("Index"); 
             }
         }
