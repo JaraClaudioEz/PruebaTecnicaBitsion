@@ -22,7 +22,9 @@ namespace PruebaTecnicaBitsion.Models
 
         public int calcularEdad()
         {
-            return 0;
+            TimeSpan edad = DateTime.Today - Nacimiento;
+            DateTime total = new DateTime(edad.Ticks);
+            return total.Year - 1;
         }
 
     }
