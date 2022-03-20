@@ -13,48 +13,51 @@
 
     <div class="row">
         <div class="col">
-                @using (Html.BeginForm())
-                {
-                    @Html.HiddenFor(x => x.ClienteModel.Id)
-                    <div class="my-3">
-                        <label class="form-label">Nombre Completo</label>
-                        @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @type = "text", @readonly = "readonly" })
-                    </div>
-                    <div class="my-3">
-                        <label class="form-label">DNI</label>
-                        @Html.TextBoxFor(x => x.ClienteModel.DNI, htmlAttributes: new { @class = "form-control", @type = "number", @readonly = "readonly" })
-                    </div>
-                    <div class="my-3">
-                        <label class="form-label">Fecha de Nacimiento</label>
-                        @Html.TextBoxFor(x => x.ClienteModel.Nacimiento, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @type = "date", @readonly = "readonly" })
-                    </div>
-                    <div class="my-3">
-                        <label class="form-label">Género</label>
-                        @Html.DropDownListFor(x => x.ClienteModel.IdGenero, new SelectList(Model.Generos, "Id", "Descripcion"), "Seleccione...", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
-                    </div>
-                    <div class="my-3 form-check">
-                        <label class="form-label">Activo</label>
-                        @Html.CheckBoxFor(x => x.ClienteModel.Estado, htmlAttributes: new { @disabled="disabled" })
-                    </div>
-                    <div class="my-3 form-check">
-                        <label class="form-label">Maneja?</label>
-                        @Html.CheckBoxFor(x => x.ClienteModel.Maneja, htmlAttributes: new { @disabled = "disabled" })
-                    </div>
-                    <div class="my-3 form-check">
-                        <label class="form-label">Usa Lentes?</label>
-                        @Html.CheckBoxFor(x => x.ClienteModel.Lentes, htmlAttributes: new { @disabled = "disabled" })
-                    </div>
-                    <div class="my-3 form-check">
-                        <label class="form-label">Es diabético?</label>
-                        @Html.CheckBoxFor(x => x.ClienteModel.Diabetico, htmlAttributes: new { @disabled = "disabled" })
-                    </div>
-                    <div class="my-3">
-                        <label class="form-label">Otras enfermedades:</label>
-                        @Html.TextAreaFor(x => x.ClienteModel.Enfermedades, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
-                        <div id="ayudaEnfermedades" class="form-text">Si tiene otras enfermedades, descríbalas aquí.</div>
-                    </div>
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(x => x.ClienteModel.Id)
+                <div class="my-3">
+                    <label class="form-label">Nombre Completo</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @type = "text", @readonly = "readonly" })
+                </div>
+                <div class="my-3">
+                    <label class="form-label">DNI</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.DNI, htmlAttributes: new { @class = "form-control", @type = "number", @readonly = "readonly" })
+                </div>
+                <div class="my-3">
+                    <label class="form-label">Fecha de Nacimiento</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Nacimiento, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @type = "date", @readonly = "readonly" })
+                </div>
+                <div class="my-3">
+                    <label class="form-label">Género</label>
+                    @Html.DropDownListFor(x => x.ClienteModel.IdGenero, new SelectList(Model.Generos, "Id", "Descripcion"), "Seleccione...", htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="my-3 form-check">
+                    <label class="form-label">Activo</label>
+                    @Html.CheckBoxFor(x => x.ClienteModel.Estado, htmlAttributes: new { @disabled = "disabled" })
+                </div>
+                <div class="my-3 form-check">
+                    <label class="form-label">Maneja?</label>
+                    @Html.CheckBoxFor(x => x.ClienteModel.Maneja, htmlAttributes: new { @disabled = "disabled" })
+                </div>
+                <div class="my-3 form-check">
+                    <label class="form-label">Usa Lentes?</label>
+                    @Html.CheckBoxFor(x => x.ClienteModel.Lentes, htmlAttributes: new { @disabled = "disabled" })
+                </div>
+                <div class="my-3 form-check">
+                    <label class="form-label">Es diabético?</label>
+                    @Html.CheckBoxFor(x => x.ClienteModel.Diabetico, htmlAttributes: new { @disabled = "disabled" })
+                </div>
+                <div class="my-3">
+                    <label class="form-label">Otras enfermedades:</label>
+                    @Html.TextAreaFor(x => x.ClienteModel.Enfermedades, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                    <div id="ayudaEnfermedades" class="form-text">Si tiene otras enfermedades, descríbalas aquí.</div>
+                </div>
+                <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-danger my-3">Eliminar</button>
-                }
+                    <a href="/Cliente" class="btn btn-success" role="button">Cancelar</a>
+                </div>                
+            }
         </div>
     </div>
 </div>

@@ -4,7 +4,6 @@
     ViewBag.Title = "Alta";
 }
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -16,27 +15,27 @@
         <div class="col">
             @using (Html.BeginForm())
             {
-            <div class="my-3">
-                <label class="form-label">Nombre Completo</label>
-                @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @type = "text" })
-                @Html.ValidationMessageFor(x => x.ClienteModel.Nombre, "",htmlAttributes: new { @class = "text-danger" })
-            </div>
-            <div class="my-3">
-                <label class="form-label">DNI</label>
-                @Html.TextBoxFor(x => x.ClienteModel.DNI, htmlAttributes: new { @class = "form-control", @type = "number" })
-                @Html.ValidationMessageFor(x => x.ClienteModel.DNI, "", htmlAttributes: new { @class = "text-danger" })
-            </div>
-            <div class="my-3">
-                <label class="form-label">Fecha de Nacimiento</label>
-                @Html.TextBoxFor(x => x.ClienteModel.Nacimiento, htmlAttributes: new { @class = "form-control", @type = "date", @max = DateTime.Today.AddYears(-18).ToString("yyyy-MM-dd") })
-                @Html.ValidationMessageFor(x => x.ClienteModel.Nacimiento, "", htmlAttributes: new { @class = "text-danger" })
-            <div id="ayudaNecimiento" class="form-text">El cliente debe ser mayor de 18 años y menor a los 70 años para obtener un seguro.</div>
-            </div>
-            <div class="my-3">
-                <label class="form-label">Género</label>
-                @Html.DropDownListFor(x => x.ClienteModel.IdGenero, new SelectList(Model.Generos, "Id", "Descripcion"), "Seleccione...", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.ClienteModel.IdGenero, "", htmlAttributes: new { @class = "text-danger" })
-            </div>
+                <div class="my-3">
+                    <label class="form-label">Nombre Completo</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.Nombre, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+                <div class="my-3">
+                    <label class="form-label">DNI</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.DNI, htmlAttributes: new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.DNI, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
+                <div class="my-3">
+                    <label class="form-label">Fecha de Nacimiento</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Nacimiento, htmlAttributes: new { @class = "form-control", @type = "date", @max = DateTime.Today.AddYears(-18).ToString("yyyy-MM-dd"), @min = DateTime.Today.AddYears(-88).ToString("yyyy-MM-dd") })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.Nacimiento, "", htmlAttributes: new { @class = "text-danger" })
+                    <div id="ayudaNecimiento" class="form-text">El cliente debe ser mayor de 18 años y menor a los 70 años para obtener un seguro.</div>
+                </div>
+                <div class="my-3">
+                    <label class="form-label">Género</label>
+                    @Html.DropDownListFor(x => x.ClienteModel.IdGenero, new SelectList(Model.Generos, "Id", "Descripcion"), "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.IdGenero, "", htmlAttributes: new { @class = "text-danger" })
+                </div>
                 <div class="my-3 form-check">
                     <label class="form-label">Activo</label>
                     @Html.CheckBoxFor(x => x.ClienteModel.Estado)
@@ -58,7 +57,10 @@
                     @Html.TextAreaFor(x => x.ClienteModel.Enfermedades, htmlAttributes: new { @class = "form-control" })
                     <div id="ayudaEnfermedades" class="form-text">Si tiene otras enfermedades, descríbalas aquí.</div>
                 </div>
-                <button type="submit" class="btn btn-primary my-3">Agregar</button>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary my-3">Agregar</button>
+                    <a href="/Cliente" class="btn btn-warning" role="button">Volver</a>
+                </div>
             }
         </div>
     </div>
