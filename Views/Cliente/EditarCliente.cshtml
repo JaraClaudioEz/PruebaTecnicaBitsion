@@ -19,18 +19,22 @@
                     <div class="my-3">
                         <label class="form-label">Nombre Completo</label>
                         @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @type = "text" })
+                        @Html.ValidationMessageFor(x => x.ClienteModel.Nombre, "",htmlAttributes: new { @class = "text-danger" })
                     </div>
                     <div class="my-3">
                         <label class="form-label">DNI</label>
                         @Html.TextBoxFor(x => x.ClienteModel.DNI, htmlAttributes: new { @class = "form-control", @type = "number" })
+                        @Html.ValidationMessageFor(x => x.ClienteModel.DNI, "", htmlAttributes: new { @class = "text-danger" })
                     </div>
                     <div class="my-3">
                         <label class="form-label">Fecha de Nacimiento</label>
-                        @Html.TextBoxFor(x => x.ClienteModel.Nacimiento, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @type = "date" })
+                        @Html.TextBoxFor(x => x.ClienteModel.Nacimiento, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @type = "date", @max = DateTime.Today.AddYears(-18).ToString("yyyy-MM-dd") })
+                        @Html.ValidationMessageFor(x => x.ClienteModel.Nacimiento, "", htmlAttributes: new { @class = "text-danger" })
                     </div>
                     <div class="my-3">
                         <label class="form-label">Género</label>
                         @Html.DropDownListFor(x => x.ClienteModel.IdGenero, new SelectList(Model.Generos, "Id", "Descripcion"), "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => x.ClienteModel.IdGenero, "", htmlAttributes: new { @class = "text-danger" })
                     </div>
                     <div class="my-3 form-check">
                         <label class="form-label">Activo</label>
