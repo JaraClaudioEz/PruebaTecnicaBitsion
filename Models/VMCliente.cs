@@ -7,7 +7,7 @@ namespace PruebaTecnicaBitsion.Models
 {
     public class VMCliente
     {
-        public Cliente ClienteModel { get; set; }
-        public List<Genero> Generos { get; set; }
+        public Clientes ClienteModel { get; set; }
+        public List<Generos> Generos { get; set; }
     }
 }

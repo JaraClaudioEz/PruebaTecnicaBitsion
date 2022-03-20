@@ -15,46 +15,46 @@
         <div class="col">
             @using (Html.BeginForm())
             {
-                @Html.HiddenFor(x => x.ClienteModel.Id)
+                @Html.HiddenFor(x => x.ClienteModel.idCliente)
                 <div class="my-3">
                     <label class="form-label">Nombre Completo</label>
-                    @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @type = "text" })
-                    @Html.ValidationMessageFor(x => x.ClienteModel.Nombre, "", htmlAttributes: new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.ClienteModel.nombre, htmlAttributes: new { @class = "form-control", @type = "text" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.nombre, "", htmlAttributes: new { @class = "text-danger" })
                 </div>
                 <div class="my-3">
                     <label class="form-label">DNI</label>
-                    @Html.TextBoxFor(x => x.ClienteModel.DNI, htmlAttributes: new { @class = "form-control", @type = "number" })
-                    @Html.ValidationMessageFor(x => x.ClienteModel.DNI, "", htmlAttributes: new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.ClienteModel.dni, htmlAttributes: new { @class = "form-control", @type = "number" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.dni, "", htmlAttributes: new { @class = "text-danger" })
                 </div>
                 <div class="my-3">
                     <label class="form-label">Fecha de Nacimiento</label>
-                    @Html.TextBoxFor(x => x.ClienteModel.Nacimiento, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @type = "date", @max = DateTime.Today.AddYears(-18).ToString("yyyy-MM-dd"), @min = DateTime.Today.AddYears(-88).ToString("yyyy-MM-dd") })
-                    @Html.ValidationMessageFor(x => x.ClienteModel.Nacimiento, "", htmlAttributes: new { @class = "text-danger" })
+                    @Html.TextBoxFor(x => x.ClienteModel.nacimiento, "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @type = "date", @max = DateTime.Today.AddYears(-18).ToString("yyyy-MM-dd"), @min = DateTime.Today.AddYears(-88).ToString("yyyy-MM-dd") })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.nacimiento, "", htmlAttributes: new { @class = "text-danger" })
                 </div>
                 <div class="my-3">
                     <label class="form-label">Género</label>
-                    @Html.DropDownListFor(x => x.ClienteModel.IdGenero, new SelectList(Model.Generos, "Id", "Descripcion"), "Seleccione...", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(x => x.ClienteModel.IdGenero, "", htmlAttributes: new { @class = "text-danger" })
+                    @Html.DropDownListFor(x => x.ClienteModel.idGenero, new SelectList(Model.Generos, "idGenero", "Descripcion"), "Seleccione...", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.idGenero, "", htmlAttributes: new { @class = "text-danger" })
                 </div>
                 <div class="my-3 form-check">
                     <label class="form-label">Activo</label>
-                    @Html.CheckBoxFor(x => x.ClienteModel.Estado)
+                    @Html.CheckBoxFor(x => x.ClienteModel.estado)
                 </div>
                 <div class="my-3 form-check">
                     <label class="form-label">Maneja?</label>
-                    @Html.CheckBoxFor(x => x.ClienteModel.Maneja)
+                    @Html.CheckBoxFor(x => x.ClienteModel.maneja)
                 </div>
                 <div class="my-3 form-check">
                     <label class="form-label">Usa Lentes?</label>
-                    @Html.CheckBoxFor(x => x.ClienteModel.Lentes)
+                    @Html.CheckBoxFor(x => x.ClienteModel.lentes)
                 </div>
                 <div class="my-3 form-check">
                     <label class="form-label">Es diabético?</label>
-                    @Html.CheckBoxFor(x => x.ClienteModel.Diabetico)
+                    @Html.CheckBoxFor(x => x.ClienteModel.diabetico)
                 </div>
                 <div class="my-3">
                     <label class="form-label">Otras enfermedades:</label>
-                    @Html.TextAreaFor(x => x.ClienteModel.Enfermedades, htmlAttributes: new { @class = "form-control" })
+                    @Html.TextAreaFor(x => x.ClienteModel.enfermedades, htmlAttributes: new { @class = "form-control" })
                     <div id="ayudaEnfermedades" class="form-text">Si tiene otras enfermedades, descríbalas aquí.</div>
                 </div>
                 <div class="d-grid gap-2">
