@@ -40,7 +40,7 @@
         <td>
             @item.Descripcion
         </td>
-            @if (item.Estado) { <td>Activo</td> } else { <td>Baja</td> }
+            @if (item.Estado) { <td class="text-success">Activo</td> } else { <td class="text-danger">Baja</td> }
             @if (item.Maneja) { <td>Si</td> } else { <td>No</td> }
             @if (item.Lentes) { <td>Si</td> } else { <td>No</td> }
             @if (item.Diabetico) { <td>Si</td> } else { <td>No</td> }
