@@ -29,7 +29,7 @@ namespace PruebaTecnicaBitsion.Models
         public bool lentes { get; set; }
         public bool diabetico { get; set; }
         public string enfermedades { get; set; }
-        [Range(999999, 99999999)]
+        [Range(1000000, 99999999)]
         public int dni { get; set; }
     
         public virtual Generos Generos { get; set; }
